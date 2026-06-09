@@ -1,131 +1,288 @@
 # 📊 Marketing ROI Dashboard
 
-## 📌 Project Overview
+A comprehensive **Marketing ROI Dashboard** project built using **Python, Pandas, and Jupyter Notebook** to analyze marketing performance by combining **web analytics**, **advertising spend**, and **CRM conversion data**. This project helps businesses understand customer behavior, campaign effectiveness, and return on investment (ROI) to make data-driven marketing decisions.
 
-This project analyzes marketing campaign performance across multiple channels using advertising spend, CRM conversion data, and website analytics data. The goal is to measure campaign effectiveness, identify high-performing channels, and generate actionable business insights through data analysis and visualization.
+---
+
+## 🚀 Project Overview
+
+Marketing teams often struggle to connect website engagement, advertising costs, and actual conversions. This project integrates multiple datasets to provide insights into the complete marketing funnel:
+
+**Ad Spend → Website Engagement → Lead Conversion**
+
+The dashboard enables analysis of:
+
+* Traffic source performance
+* Customer engagement behavior
+* Campaign effectiveness
+* Conversion outcomes
+* Marketing spend efficiency
 
 ---
 
 ## 🎯 Objectives
 
-- Analyze marketing spend across different channels
-- Measure campaign engagement and performance
-- Calculate key marketing KPIs
-- Identify top-performing campaigns and traffic sources
-- Support data-driven marketing decisions
+* Analyze user engagement from website logs.
+* Evaluate advertising performance across channels.
+* Examine CRM conversion trends.
+* Calculate marketing KPIs such as CTR and CPC.
+* Identify high-performing campaigns and traffic sources.
+* Support data-driven decision making.
 
 ---
 
 ## 📂 Dataset Information
 
-The project uses three datasets:
+The project uses three datasets containing **10,000 records each**.
 
-### 1. Ad Spend Data
-Contains:
-- Marketing channel
-- Campaign information
-- Impressions
-- Clicks
-- Ad spend
-- Country
+### 1. Web Analytics Logs (`web_analytics_logs_10k.csv`)
 
-### 2. CRM Conversion Data
-Contains:
-- Leads
-- Conversions
-- Revenue
-- Customer acquisition information
+Tracks website user behavior.
 
-### 3. Web Analytics Data
-Contains:
-- Website visits
-- User behavior
-- Traffic sources
-- Page views
-- Session metrics
+**Features:**
+
+* Session ID
+* User ID
+* Session Date
+* Traffic Source
+* UTM Source
+* UTM Medium
+* UTM Campaign
+* Device
+* City
+* Country
+* Pages Viewed
+* Session Duration (seconds)
+* Bounce Flag
+
+---
+
+### 2. CRM Conversion Data (`crm_conversions_10k.csv`)
+
+Captures customer journey and sales outcomes.
+
+**Features:**
+
+* Conversion ID
+* User ID
+* Lead Date
+* Conversion Date
+* Lead Stage
+* Customer Journey
+* Product
+* Deal Value
+* Country
+* City
+* Conversion Status
+
+---
+
+### 3. Advertising Spend Data (`ad_spend_10k.csv`)
+
+Contains campaign investment metrics.
+
+**Features:**
+
+* Spend ID
+* Date
+* Channel
+* Campaign
+* UTM Source
+* UTM Medium
+* UTM Campaign
+* Impressions
+* Clicks
+* Ad Spend
+* Country
 
 ---
 
 ## 🛠️ Technologies Used
 
-- Python
-- Pandas
-- Jupyter Notebook
+* Python
+* Pandas
+* Jupyter Notebook
+* NumPy
+* Matplotlib
+* Git & GitHub
 
 ---
 
-## 🧹 Data Cleaning Performed
+## 📋 Data Cleaning Process
 
-- Missing value identification
-- Null value handling
-- Duplicate removal
-- Column standardization
-- Date formatting
-- Data quality validation
+### Web Analytics
 
-Example:
+* Checked missing values.
+* Filled missing values in:
+
+  * `utm_campaign`
+  * `city`
+* Removed duplicate records.
+* Verified data types.
+
+The notebook identified approximately **6% missing values** in `utm_campaign` and `city`, which were replaced with `"Unknown"` before analysis. 
+
+---
+
+### Advertising Data
+
+* Filled missing campaign values.
+* Filled missing UTM sources.
+* Converted dates into datetime format.
+* Created additional marketing metrics:
+
+  * CTR
+  * CPC
+
+CTR and CPC were calculated using:
 
 ```python
-ad_spend['campaign'] = ad_spend['campaign'].fillna('Unknown')
-ad_spend['utm_source'] = ad_spend['utm_source'].fillna('Unknown')
+ad_spend['ctr'] = ad_spend['clicks'] / ad_spend['impressions']
+ad_spend['cpc'] = ad_spend['ad_spend'] / ad_spend['clicks']
 ```
+
+as shown in the notebook. 
 
 ---
 
-## 📈 Key Metrics
+## 📈 Exploratory Data Analysis
 
-### Click Through Rate (CTR)
+The project explores:
 
-```text
-CTR = Clicks / Impressions
-```
+### Website Analytics
 
-### Cost Per Click (CPC)
+* Traffic source distribution
+* Session engagement
+* Top sessions by pages viewed
+* Bounce behavior
+* Device usage patterns
 
-```text
-CPC = Ad Spend / Clicks
-```
+The most frequent traffic channels included:
 
-### Return on Investment (ROI)
+* Google Ads
+* YouTube Ads
+* Organic Search
+* Email
+* Instagram Ads
+* LinkedIn Ads
+* Facebook Ads
 
-```text
-ROI = (Revenue - Ad Spend) / Ad Spend
-```
-
----
-
-## 📊 Analysis Performed
-
-- Channel-wise spend analysis
-- Campaign performance analysis
-- Country-wise marketing spend
-- Traffic source analysis
-- Conversion performance evaluation
-- Top-performing campaigns identification
+according to the analysis notebook. 
 
 ---
 
-## 📁 Repository Structure
+### Advertising Performance
 
-```text
-Marketing-_ROI_Dashboard
+Analysis includes:
+
+* Total ad spend by channel
+* Click performance
+* Campaign comparisons
+* Country-wise spend
+
+Example insight:
+
+| Channel        |  Total Spend |
+| -------------- | -----------: |
+| Organic Search | 7,548,744.59 |
+| LinkedIn Ads   | 7,387,917.12 |
+| YouTube Ads    | 7,369,202.58 |
+| Google Ads     | 7,356,371.49 |
+
+from the notebook outputs. 
+
+---
+
+### CRM Conversion Analysis
+
+Insights include:
+
+* Lead stage distribution
+* Conversion status analysis
+* Product performance
+* Customer journey patterns
+* Revenue trends
+
+---
+
+## 📊 Key Performance Indicators (KPIs)
+
+The dashboard focuses on:
+
+* Total Sessions
+* Total Ad Spend
+* Total Clicks
+* Average Session Duration
+* Bounce Rate
+* Conversion Rate
+* Cost Per Click (CPC)
+* Click Through Rate (CTR)
+* Total Revenue
+* Average Deal Value
+* Top Performing Channels
+
+---
+
+## 📁 Project Structure
+
+```
+Marketing_ROI_Dashboard/
 │
 ├── dataset/
-├── data/
+│   ├── web_analytics_logs_10k.csv
+│   ├── crm_conversions_10k.csv
+│   └── ad_spend_10k.csv
+│
 ├── project1.ipynb
 ├── README.md
-└── .gitignore
+└── requirements.txt
 ```
 
 ---
 
-## 🚀 Future Enhancements
+## ▶️ How to Run the Project
 
-- Interactive Power BI Dashboard
-- Marketing ROI Prediction Model
-- Customer Segmentation
-- Campaign Performance Forecasting
-- Executive Summary Dashboard
+### Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/Marketing_ROI_Dashboard.git
+cd Marketing_ROI_Dashboard
+```
+
+### Install Dependencies
+
+```bash
+pip install pandas numpy matplotlib jupyter
+```
+
+### Launch Jupyter Notebook
+
+```bash
+jupyter notebook
+```
+
+Open:
+
+```bash
+project1.ipynb
+```
+
+and run all cells.
 
 ---
 
+## 💡 Business Impact
+
+This project demonstrates how marketing data from multiple sources can be integrated to answer critical business questions:
+
+* Which channels drive the highest engagement?
+* Which campaigns generate the best ROI?
+* What customer journeys lead to conversions?
+* How can marketing budgets be optimized?
+
+The resulting insights help organizations improve campaign efficiency and maximize returns on marketing investments.
+
+---
+
+
+⭐ If you found this project useful, consider giving it a **star** on GitHub!

@@ -284,5 +284,121 @@ The resulting insights help organizations improve campaign efficiency and maximi
 
 ---
 
+## 🎯 Attribution Modeling
 
+Traditional marketing reporting often assigns all conversion credit to the final interaction before purchase. This project extends beyond basic ROI analysis by implementing Multi-Touch Attribution Models.
+
+### Attribution Models
+
+#### First-Touch Attribution
+Assigns 100% conversion credit to the first customer interaction.
+
+Example:
+Google Ads → Email → Direct → Purchase
+
+Credit:
+Google Ads = 100%
+
+---
+
+#### Last-Touch Attribution
+Assigns 100% conversion credit to the final interaction before conversion.
+
+Example:
+Google Ads → Email → Direct → Purchase
+
+Credit:
+Direct = 100%
+
+---
+
+#### Linear Attribution
+Distributes conversion credit equally across all touchpoints.
+
+Example:
+Google Ads → Email → Direct → Purchase
+
+Credit:
+Google Ads = 33.3%
+Email = 33.3%
+Direct = 33.3%
 ⭐ If you found this project useful, consider giving it a **star** on GitHub!
+
+## 🗺️ Project Roadmap
+
+### Week 1
+- Data Cleaning
+- Data Profiling
+- EDA
+- KPI Development
+
+### Week 2
+- SQL Data Warehouse
+- Customer Journey Sequencing
+- First-Touch Attribution
+- Last-Touch Attribution
+- Linear Attribution
+
+### Week 3
+- Star Schema Design
+- CAC Calculation
+- ROAS Calculation
+- Revenue Attribution
+
+### Week 4
+- Power BI Dashboard Development
+- Executive Reporting
+- Marketing Performance Analysis
+
+## 🗄️ SQL Concepts Used
+
+- INNER JOIN
+- LEFT JOIN
+- Window Functions
+- ROW_NUMBER()
+- PARTITION BY
+- Common Table Expressions (CTEs)
+- Customer Journey Sequencing
+- Attribution Logic
+
+## 📊 Dashboard Deliverables
+
+The final dashboard will contain:
+
+1. Executive Overview
+2. Marketing Spend Analysis
+3. Campaign Performance
+4. Attribution Comparison
+5. Customer Journey Analysis
+6. Conversion Funnel
+7. Geographic Insights
+8. ROI & ROAS Analysis
+
+## 📈 Advanced Marketing KPIs
+
+- Total Spend
+- Total Revenue
+- CTR
+- CPC
+- CAC
+- Conversion Rate
+- ROAS
+- ROI
+- Revenue per Campaign
+- Revenue per Channel
+- Attribution Revenue
+- Funnel Conversion %
+
+
+Final repo or folder structure after week 4
+Marketing_ROI_Dashboard/
+
+├── dataset/
+├── project1.ipynb
+├── sql/
+│   ├── schema.sql
+│   ├── attribution.sql
+│   └── kpis.sql
+├── powerbi/
+├── README.md
+└── requirements.txt

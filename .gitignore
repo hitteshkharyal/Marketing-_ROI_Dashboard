@@ -1,2 +1,5 @@
 .ipynb_checkpoints/
 .data/
+marketing.db/
+marketing.db
+*.db
